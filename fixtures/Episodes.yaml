@@ -1,0 +1,9 @@
+App\Entity\Episode:
+    episode_{1..100}:
+        canonicalTitle: <text()>
+        seasonNumber: <randomNumber(5, false)>
+        number: <randomNumber(5, false)>
+        synopsis: <text()>
+        airdate: <dateTimeImmutable()>
+        length: <randomNumber(5, false)>
+        title: <word()>

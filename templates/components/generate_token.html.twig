@@ -1,0 +1,23 @@
+<div class="mx-auto"{{ attributes }}>
+
+	<div data-controller="clipboard" data-clipboard-success-content="&#10004;">
+
+		<div class="input-group mb-3">
+
+			<div class="form-floating">
+				<input type="password" class="form-control" id="password" placeholder="Password" value={{this.token}} data-clipboard-target="source">
+				<label for="password">Clé API</label>
+			</div>
+			<button class="btn btn-outline-secondary btn-icon" type="button" data-action="clipboard#copy" data-clipboard-target="button">
+				{% include "icon/clipboard.html.twig" only %}
+			</button>
+
+		</div>
+		<p class="mt-3">Date de création :
+			{{this.date}}</p>
+
+		<button class="btn btn-secondary" data-action="live#action" data-action-name="generateToken">Créez une nouvelle clé API</button>
+
+	</div>
+
+</div>

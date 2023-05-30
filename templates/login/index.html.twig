@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container">
+		<form action="{{ path('login') }}" method="post">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="username" name="_username" placeholder="name@example.com" required>
+				<label for="username">Email address</label>
+			</div>
+			<div data-controller="password-visibility" class="input-group mb-3 form-floating">
+				<input type="password" class="form-control" id="password" placeholder="Password" name="_password" data-password-visibility-target="input" spellcheck="false" autocomplete="current-password" required>
+				<label for="password">Password</label>
+				<button class="btn btn-outline-secondary btn-icon" type="button" data-action="password-visibility#toggle">
+					{% include "icon/eye.html.twig" only %}
+					{% include "icon/eye_slash.html.twig" with { class: "hidden" } only %}
+				</button>
+			</div>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<button class="btn btn-primary mt-3" type="submit">Connexion</button>
+			{% if error %}
+				<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+		</form>
+	</div>
+
+{% endblock %}

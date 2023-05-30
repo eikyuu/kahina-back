@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+	</style>
+
+	<div class="container">
+
+		{{ component('generate_token', { 
+            token : token,
+			date: date,
+        }) }}
+
+	</div>
+{% endblock %}

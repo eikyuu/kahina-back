@@ -1,0 +1,4 @@
+App\Entity\Music:
+    music_{1..100}:
+        name: <name()>
+        composer: '@composer_*'

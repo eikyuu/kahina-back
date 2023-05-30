@@ -1,0 +1,41 @@
+App\Entity\Anime:
+    anime_{1..100}:
+        createdAt: <dateTimeImmutable()>
+        updatedAt: <dateTimeImmutable()>
+        slug: <slug()>
+        synopsis: <text()>
+        description: <text()>
+        type: movie
+        canonicalTitle: <word()>
+        averageRating: <randomFloat()>
+        userCount: <randomNumber(5, false)>
+        upVoteCount: randomNumber(5, false)
+        startDate: <dateTimeImmutable()>
+        endDate: <dateTimeImmutable()>
+        nextRelease: <dateTimeImmutable()>
+        popularityRank: <randomNumber(5, false)>
+        ratingRank: randomNumber(5, false)
+        ageRating: <word()>
+        ageRatingGuide: <word()>
+        origin: <word()>
+        status: <word()>
+        episodeCount: <randomNumber(5, false)>
+        episodeLength: <randomNumber(5, false)>
+        totalLength: <randomNumber(5, false)>
+        youtubeVideoId: <word()>
+        nsfw: <boolean()>
+        title: '@title_*'
+        genre: <word()>
+        episode: '@episode_*'
+        figure: '@figure_*'
+        staff: '@staff_*' 
+        music: '@music_*'
+        quote: '@quote_*'
+        streamingLink: '@streamingLink_*'
+        license: '@license_*'
+        theme: '@theme_*'
+        studio: '@studio_*'
+        showType:
+        score:
+        favorite:
+        book: '@book_*'
