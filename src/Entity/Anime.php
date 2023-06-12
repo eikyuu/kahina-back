@@ -225,7 +225,7 @@ class Anime
     #[ORM\JoinTable(name: 'anime_relationships')]
     private Collection $relationship;
 
-    #[Groups([Anime::ANIME_READ])]
+    #[Groups([Anime::ANIME_READ, Anime::ANIME_WRITE])]
     #[ORM\Column]
     private ?int $nbrSeason = null;
 

@@ -42,11 +42,6 @@ class Figure
     #[ORM\Column(length: 255)]
     private ?string $role = null;
 
-    #[Groups([Anime::ANIME_READ, Anime::ANIME_WRITE])]
-    #[ORM\ManyToOne(inversedBy: 'figure', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Staff $staff = null;
-
     #[ORM\ManyToOne(inversedBy: 'figure')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Anime $anime = null;
@@ -65,6 +60,9 @@ class Figure
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: FigureImage::class)]
     #[SerializedName('image')]
     private Collection $figureImage;
+
+    #[ORM\ManyToOne(inversedBy: 'figure')]
+    private ?Staff $staff = null;
 
     public function __construct()
     {
@@ -96,18 +94,6 @@ class Figure
     public function setRole(string $role): self
     {
         $this->role = $role;
-
-        return $this;
-    }
-
-    public function getStaff(): ?Staff
-    {
-        return $this->staff;
-    }
-
-    public function setStaff(?Staff $staff): self
-    {
-        $this->staff = $staff;
 
         return $this;
     }
@@ -174,6 +160,18 @@ class Figure
                 $figureImage->setFigure(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStaff(): ?Staff
+    {
+        return $this->staff;
+    }
+
+    public function setStaff(?Staff $staff): self
+    {
+        $this->staff = $staff;
 
         return $this;
     }

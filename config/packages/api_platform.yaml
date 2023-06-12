@@ -18,3 +18,11 @@ api_platform:
                 name: Authorization
                 type: header
     path_segment_name_generator: api_platform.path_segment_name_generator.dash
+    defaults:
+        pagination_items_per_page: 12
+        pagination_client_enabled: true
+        pagination_client_items_per_page: true
+    collection:
+        pagination:
+            items_per_page_parameter_name: 'items'
+

@@ -78,10 +78,14 @@ class Staff
     #[ApiProperty(identifier: true)]
     private ?string $slug = null;
 
+    #[ORM\OneToMany(mappedBy: 'staff', targetEntity: Figure::class)]
+    private Collection $figure;
+
     public function __construct()
     {
         $this->staffImage = new ArrayCollection();
         $this->animes = new ArrayCollection();
+        $this->figure = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -250,6 +254,36 @@ class Staff
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Figure>
+     */
+    public function getFigure(): Collection
+    {
+        return $this->figure;
+    }
+
+    public function addFigure(Figure $figure): self
+    {
+        if (!$this->figure->contains($figure)) {
+            $this->figure->add($figure);
+            $figure->setStaff($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFigure(Figure $figure): self
+    {
+        if ($this->figure->removeElement($figure)) {
+            // set the owning side to null (unless already changed)
+            if ($figure->getStaff() === $this) {
+                $figure->setStaff(null);
+            }
+        }
 
         return $this;
     }
